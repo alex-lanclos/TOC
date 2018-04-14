@@ -40,17 +40,34 @@ class FacilityMapScreen extends Component {
             latitudeDelta: 0.9,
             longitudeDelta: 0.9,
           }}>
-          {this.props.treatmentCenters.map(marker => (
+          {this.props.treatmentCenters.map((marker, index) => (
             <Marker
-              key={marker.name1 + '_' + marker.service}
+              key={index}
+              identifier={marker}
               coordinate={{
                 latitude: parseInt(marker.latitude),
                 longitude: parseInt(marker.longitude),
               }}
               title={marker.name1}
+              onPress={e => {
+                // let treatmentCenter = this.props.treatmentCenters[e.target];
+                // this.props.navigation.navigate('TreatmentCenterScreen', {
+                //   treatmentCenter,
+                // });
+                console.tron.log(e.nativeEvent);
+              }}
             />
           ))}
         </MapView>
+
+        {/* <Marker
+          key={marker.id}
+          coordinate={{
+            latitude: parseInt(marker.address.location.latitude),
+            longitude: parseInt(marker.address.location.longitude),
+          }}
+          title={marker.facility.name}
+        /> */}
 
         <ExitButton context={this} />
 

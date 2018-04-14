@@ -4,6 +4,7 @@ import FacilityMapScreen from '../Containers/FacilityMapScreen';
 import HotLinesScreen from '../Containers/HotLinesScreen';
 import IntroQuestionsScreen from '../Containers/IntroQuestionsScreen';
 import SignsAndSymptomsScreen from '../Containers/SignsAndSymptomsScreen';
+import TreatmentCenterScreen from '../Containers/TreatmentCenterScreen';
 
 import styles from './Styles/NavigationStyles';
 
@@ -15,6 +16,7 @@ const PrimaryNav = StackNavigator(
     HotLinesScreen: { screen: HotLinesScreen },
     IntroQuestionsScreen: { screen: IntroQuestionsScreen },
     SignsAndSymptomsScreen: { screen: SignsAndSymptomsScreen },
+    TreatmentCenterScreen: { screen: TreatmentCenterScreen },
   },
   {
     // Default config for all screens
