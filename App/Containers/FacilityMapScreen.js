@@ -48,7 +48,6 @@ class FacilityMapScreen extends Component {
                 latitude: parseInt(marker.latitude),
                 longitude: parseInt(marker.longitude),
               }}
-              title={marker.name1}
               onPress={e => {
                 let treatmentCenter = this.props.treatmentCenters[
                   parseInt(e.nativeEvent.id)
