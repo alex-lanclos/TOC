@@ -55,12 +55,18 @@ export default StyleSheet.create({
     marginHorizontal: Metrics.baseMargin,
     color: Colors.text,
   },
-  sectionText: {
+  titleText: {
     textAlign: 'left',
     fontFamily: Fonts.base,
     fontSize: 22,
-    marginTop: Metrics.baseMargin,
-    marginHorizontal: Metrics.doubleBaseMargin,
+    marginLeft: Metrics.doubleBaseMargin,
+    marginRight: 10,
+    color: Colors.text,
+  },
+  valueText: {
+    textAlign: 'left',
+    fontFamily: Fonts.base,
+    fontSize: 22,
     color: Colors.text,
   },
   subSectionText: {

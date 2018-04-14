@@ -25,9 +25,59 @@ import styles from './Styles/TreatmentCenterScreenStyles';
 //person-outline MaterialIcons
 
 export default class FacilityMapScreen extends Component {
+  _renderAddress(treatmentCenter) {
+    if (treatmentCenter.street2 && treatmentCenter.street2 !== '') {
+      return (
+        <View>
+          <Text style={styles.valueText}>{treatmentCenter.street1}</Text>
+          <Text style={styles.valueText}>{treatmentCenter.street2}</Text>
+          <Text style={styles.valueText}>
+            {treatmentCenter.city +
+              ', ' +
+              treatmentCenter.state +
+              ' ' +
+              treatmentCenter.zip}
+          </Text>
+        </View>
+      );
+    } else {
+      return (
+        <View>
+          <Text style={styles.valueText}>{treatmentCenter.street1}</Text>
+          <Text style={styles.valueText}>
+            {treatmentCenter.city +
+              ', ' +
+              treatmentCenter.state +
+              ' ' +
+              treatmentCenter.zip}
+          </Text>
+        </View>
+      );
+    }
+  }
+
+  _renderWebsite(treatmentCenter) {
+    let website = treatmentCenter.website;
+
+    if (website && website !== '' && website !== 'http://') {
+      return (
+        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+          <Text style={styles.titleText}>Website:</Text>
+          <Text
+            style={[styles.valueText, { color: Colors.buttonImageColor }]}
+            onPress={() => Linking.openURL(website)}>
+            {website}
+          </Text>
+        </View>
+      );
+    }
+  }
+
   render() {
     const { params } = this.props.navigation.state;
     const treatmentCenter = params ? params.treatmentCenter : null;
+
+    console.tron.log(treatmentCenter);
 
     return (
       <View style={styles.mainContainer}>
@@ -37,12 +87,22 @@ export default class FacilityMapScreen extends Component {
           resizeMode="stretch"
         />
         <BackArrow context={this} />
-
-        <Text style={styles.categoryText}>{treatmentCenter.name1}</Text>
-        <Text style={styles.sectionText}>
-          &#8226; Tend to be loopy and giggly but will then resort to anger and
-          sadness
+        <Text style={[styles.categoryText, { marginTop: 80 }]}>
+          {treatmentCenter.name1}
         </Text>
+        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+          <Text style={styles.titleText}>Phone:</Text>
+          <Text style={styles.valueText}>{treatmentCenter.phone}</Text>
+        </View>
+        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+          <Text style={styles.titleText}>Address:</Text>
+          {this._renderAddress(treatmentCenter)}
+        </View>
+        {this._renderWebsite(treatmentCenter)}
+        <View style={{ flexDirection: 'row', marginTop: 20 }}>
+          <Text style={styles.titleText}>Service:</Text>
+          <Text style={styles.valueText}>{treatmentCenter.service}</Text>
+        </View>
       </View>
     );
   }
