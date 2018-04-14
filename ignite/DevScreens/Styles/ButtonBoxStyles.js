@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics, Fonts } from '../DevTheme/'
+import { StyleSheet } from 'react-native';
+import { Colors, Metrics, Fonts } from '../DevTheme/';
 
 export default StyleSheet.create({
   container: {
@@ -7,16 +7,15 @@ export default StyleSheet.create({
     aspectRatio: 0.9,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: Colors.eggplant
   },
   image: {
     width: Metrics.icons.xl,
     height: Metrics.icons.xl,
-    margin: Metrics.baseMargin
+    margin: Metrics.baseMargin,
   },
   label: {
     ...Fonts.style.h2,
     fontSize: 14,
-    color: Colors.text
-  }
-})
+    color: Colors.text,
+  },
+});

@@ -1,32 +1,111 @@
-import React, { Component } from 'react'
-import { ScrollView, Text, Image, View } from 'react-native'
-import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js'
+import React, { Component } from 'react';
+import {
+  ScrollView,
+  Text,
+  Image,
+  View,
+  Button,
+  TouchableOpacity,
+} from 'react-native';
+import FontAwesome from 'react-native-vector-icons/FontAwesome';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
+import DevscreensButton from '../../ignite/DevScreens/DevscreensButton.js';
 
-import { Images } from '../Themes'
+import { Images, Colors } from '../Themes';
 
 // Styles
-import styles from './Styles/LaunchScreenStyles'
+import styles from './Styles/LaunchScreenStyles';
+
+//person-outline MaterialIcons
 
 export default class LaunchScreen extends Component {
-  render () {
+  openFacilityMap = () => {
+    this.props.navigation.navigate('FacilityMapScreen');
+  };
+
+  openSignsAndSymptoms = () => {
+    this.props.navigation.navigate('SignsAndSymptomsScreen');
+  };
+
+  openHotlines = () => {
+    this.props.navigation.navigate('HotLinesScreen');
+  };
+
+  openIntroQuestions = () => {
+    this.props.navigation.navigate('IntroQuestionsScreen');
+  };
+
+  render() {
     return (
       <View style={styles.mainContainer}>
-        <Image source={Images.background} style={styles.backgroundImage} resizeMode='stretch' />
-        <ScrollView style={styles.container}>
-          <View style={styles.centered}>
-            <Image source={Images.launch} style={styles.logo} />
+        <Image
+          source={Images.background}
+          style={styles.backgroundImage}
+          resizeMode="stretch"
+        />
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          bounces={true}
+          style={styles.container}>
+          <View style={styles.logo}>
+            <FontAwesome
+              name="map-signs"
+              color={Colors.buttonImageColor}
+              size={100}
+            />
           </View>
 
-          <View style={styles.section} >
-            <Image source={Images.ready} />
-            <Text style={styles.sectionText}>
-              This probably isn't what your app is going to look like. Unless your designer handed you this screen and, in that case, congrats! You're ready to ship. For everyone else, this is where you'll see a live preview of your fully functioning app using Ignite.
-            </Text>
-          </View>
+          <Text style={styles.headerText}>The Opioid Crossroads</Text>
 
-          <DevscreensButton />
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity
+              style={[styles.buttonContainer, styles.componentButton]}
+              onPress={this.openFacilityMap}>
+              <MaterialCommunityIcons
+                name="home-map-marker"
+                color={Colors.buttonImageColor}
+                size={50}
+              />
+              <Text style={styles.buttonLabel}>Facility Map</Text>
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={[styles.buttonContainer, styles.componentButton]}
+              onPress={this.openSignsAndSymptoms}>
+              <Entypo
+                name="awareness-ribbon"
+                color={Colors.buttonImageColor}
+                size={50}
+              />
+              <Text style={styles.buttonLabel}>Signs and Symptoms</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={styles.buttonsContainer}>
+            <TouchableOpacity
+              style={[styles.buttonContainer, styles.componentButton]}
+              onPress={this.openHotlines}>
+              <MaterialCommunityIcons
+                name="phone-in-talk"
+                color={Colors.buttonImageColor}
+                size={50}
+              />
+              <Text style={styles.buttonLabel}>Hotlines</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity
+              style={[styles.buttonContainer, styles.componentButton]}
+              onPress={this.openIntroQuestions}>
+              <MaterialIcons
+                name="question-answer"
+                color={Colors.buttonImageColor}
+                size={50}
+              />
+              <Text style={styles.buttonLabel}>Intro Questions</Text>
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       </View>
-    )
+    );
   }
 }
